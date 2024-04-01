@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tugas Pertemuan 7 - Deni Permana 2210512015</title>
+    <script type="text/javascript">
+        function displayData(data) {
+            var newWindow = window.open();
+            newWindow.document.write('<html><head><title>Hasil Dari Isi Biodata</title></head><body><pre>' + data + '</pre></body></html>');
+        }
+
+        function submitForm() {
+            var nim = document.getElementById("nim").value;
+            var nama = document.getElementById("name").value;
+            var pilihan = document.querySelector('input[name="pilihan"]:checked');
+            var tahun = document.getElementById('tahun').value;
+            var hasilPilihan = document.getElementById("hasilPilihan");
+
+            if (nim === "" || nama === "" || pilihan === null || tahun === "") {
+                hasilPilihan.innerText = "Harap isi semua kolom yang bertanda *";
+                return;
+            }
+
+            var smt = (2024 - tahun) * 2;
+            var data =
+                    "Nim anda:<strong>" +  nim + "</strong>\n" +
+                    "Nama anda:<strong>" + nama + "</strong>\n" +
+                    "Jenis Kelamin anda:<strong>" + pilihan.value + "</strong>\n\n" +
+                    "Tahun Masuk anda: <strong>" + tahun + "</strong>,\n" +
+                    "dan anda berarti sekarang \nsemester:<strong>" + smt + "</strong>";
+
+            hasilPilihan.innerHTML = data;
+            displayData(data);
+
+            var blob = new Blob([data], { type: "text/plain" });
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "Isi Biodata.txt";
+
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+        }
+    </script>
+</head>
+<body>
+    <p>Isi Data Mahasiswa</p>
+    <br>
+    <div class="NIM" style="margin-bottom: 15px;">
+        <label for="nim">Nim<span style="color: red;">*</span> :</label>
+        <input type="text" id="nim">
+    </div>
+    <div class="name" style="margin-bottom: 50px;">
+        <label for="name">Nama<span style="color: red;">*</span> :</label>
+        <input type="text" id="name">
+    </div>
+    <div class="radio" style="margin-bottom: 30px;">
+        <p style="margin-bottom: 2px;">Jenis Kelamin :</p>
+        <input type="radio" id="he" name="pilihan" value="Pria">
+        <label for="he">Pria</label>
+        <input type="radio" id="she" name="pilihan" value="Perempuan">
+        <label for="she">Perempuan</label>
+    </div>
+    <div class="th">
+        <label for="tahun">Tahun Masuk<span style="color: red;">*</span> :</label>
+        <input type="number" id="tahun">
+    </div>
+    <br><br>
+    <p id="hasilPilihan"></p>
+    <button onclick="submitForm()">Submit</button>
+</body>
+</html>

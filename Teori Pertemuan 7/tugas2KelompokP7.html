@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 Kelompok Pertemuan 7 - Kelompok 3</title>
+    <link rel="stylesheet" type="text/css" href="stylesP7.css">
+</head>
+    <body>
+        <section id="outer">
+            <h1>Travel Bintang Abadi</h1>
+            <section id="middle">
+                <section id="left">
+                    <label for="nama-penumpang">Nama :</label>
+                    <input type="text" name="nama-penumpang" id="nama-penumpang">
+                    <br>
+                    <label for="tujuan-perjalanan">Tujuan :</label>
+                    <select id="tujuan-perjalanan">
+                        <option value="Cirebon">Cirebon</option>
+                        <option value="Bogor">Bogor</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Bali">Bali</option>
+                        <option value="Jakarta">Jakarta</option>
+                    </select>
+                    <br>
+                    <label for="jumlah-tiket-penumpang">Jumlah Tiket :</label>
+                    <input type="number" name="jumlah-tiket-penumpang" id="jumlah-tiket-penumpang" value="1" min="1">
+                    <br>
+                    <label for="member">Member :</label>
+                    <input type="checkbox" name="member" id="member">
+                    <label for="member">Ya</label>
+                </section>
+
+                <section id="right">
+                    <label for="harga-tiket-perjalanan">Harga Tiket :</label>
+                    <input name="harga-tiket-perjalanan" id="harga-tiket-perjalanan">
+                    <br>
+                    <label for="sub-total-harga">Sub Total :</label>
+                    <input name="sub-total-harga" id="sub-total-harga">
+                    <br>
+                    <label for="diskon-harga">Diskon :</label>
+                    <input name="diskon-harga" id="diskon-harga" readonly>
+                    <br>
+                    <label for="total-bayar-harga">Total Bayar :</label>
+                    <input name="total-bayar-harga" id="total-bayar-harga" readonly>
+                </section>
+            </section>
+
+            <section id="bottom">
+                <button id="hitung">Hitung</button>
+                <button id="ulang">Ulang</button>
+            </section>
+        </section>
+
+        <script src="scriptP7.js"></script>
+    </body>
+</html>

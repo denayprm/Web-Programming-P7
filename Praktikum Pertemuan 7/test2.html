@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Data Mahasiswa</title>
+    <script type="text/javascript">
+        function submitForm() {
+            var nim = document.getElementById("nim").value;
+            var nama = document.getElementById("name").value;
+            var pilihan = document.querySelector('input[name="pilihan"]:checked');
+            var tahun = document.getElementById('tahun').value;
+            var hasilPilihan = document.getElementById("hasilPilihan");
+
+            // Calculate semester
+            var smt = (2024 - tahun) * 2;
+
+            // Validate input
+            if (nim === "" || nama === "" || pilihan === null || tahun === "") {
+                hasilPilihan.innerText = "Harap isi semua kolom yang bertanda *";
+            } else {
+                // Construct data string
+                var data =
+                        "NIM: " + nim + "\n" +
+                        "Nama: " + nama + "\n" +
+                        "Jenis Kelamin: " + pilihan.value + "\n" +
+                        "Tahun Masuk: " + tahun + "\n" +
+                        "Semester: " + smt;
+
+                // Create a new Blob object containing the data
+                var blob = new Blob([data], { type: "text/plain" });
+
+                // Create a temporary anchor element
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "data_mahasiswa.txt";
+                
+                // Append anchor element to the body and click it programmatically to trigger download
+                document.body.appendChild(a);
+                a.click();
+
+                // Clean up
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Isi Data Mahasiswa</p>
+    <br>
+    <div class="NIM" style="margin-bottom: 15px;">
+        <label for="nim">Nim<span style="color: red;">*</span> :</label>
+        <input type="text" id="nim">
+    </div>
+    <div class="name" style="margin-bottom: 50px;">
+        <label for="name">Nama<span style="color: red;">*</span> :</label>
+        <input type="text" id="name">
+    </div>
+    <div class="radio" style="margin-bottom: 30px;">
+        <p style="margin-bottom: 2px;">Jenis Kelamin :</p>
+        <input type="radio" id="he" name="pilihan" value="Pria">
+        <label for="he">Pria</label>
+        <input type="radio" id="she" name="pilihan" value="Perempuan">
+        <label for="she">Perempuan</label>
+    </div>
+    <div class="th">
+        <label for="tahun">Tahun Masuk<span style="color: red;">*</span> :</label>
+        <input type="number" id="tahun">
+    </div>
+    <br><br>
+    <p id="hasilPilihan"></p>
+    <button onclick="submitForm()">Submit</button>
+</body>
+</html>

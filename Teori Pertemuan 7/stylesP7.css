@@ -1,0 +1,53 @@
+#outer {
+    border-top: 1px solid #bababa;
+    border-left: 1px solid #bababa;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px;
+    max-width: 464px;
+}
+
+h1 {
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#middle {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+}
+
+#left,
+#right {
+    padding: 4px 4px 16px 4px;
+}
+
+#left,
+#right,
+h1,
+#bottom {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid #bababa;
+    border-bottom: 1px solid #bababa;
+}
+
+#bottom {
+    padding: 4px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+input {
+    max-width: 16ch;
+}
+
+#member {
+    margin-right: 0px;
+}
